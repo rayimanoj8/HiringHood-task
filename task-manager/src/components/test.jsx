@@ -46,14 +46,14 @@ export default function WeatherTaskSuggestions() {
     const [error,setError] = useState(false);
     useEffect(() => {
         const fetchWeather = async () => {
-            if (!currentCity) return; // ✅ Prevent API call if no city is selected
+            if (!currentCity) return; //  Prevent API call if no city is selected
 
             try {
                 const response = await axios.get("https://api.openweathermap.org/data/2.5/weather", {
                     params: {
                         q: currentCity,
                         appid: "3df8840ece8fdc41e7080f7039b99fcc",
-                        units: "metric" // ✅ Get temperature in Celsius
+                        units: "metric" //  Get temperature in Celsius
                     }
                 });
                 setWeather(response.data);
@@ -63,7 +63,7 @@ export default function WeatherTaskSuggestions() {
             }
         };
 
-        fetchWeather(); // ✅ Call the async function
+        fetchWeather(); //  Call the async function
     }, [currentCity]);
 
     return (

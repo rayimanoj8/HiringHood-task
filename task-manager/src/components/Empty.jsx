@@ -30,7 +30,7 @@ export const EmptyComponent = () =>{
 
             ("Project created:", projectResponse.data);
 
-            // ✅ Fetch updated project list manually
+            //  Fetch updated project list manually
             const response = await axios.get(`http://localhost:5001/api/projects/${username}`);
             dispatch(setProjects(response.data));
             setNewProject("");

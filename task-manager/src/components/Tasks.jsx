@@ -46,7 +46,7 @@ const Tasks = () => {
         };
 
         if (pid) {
-            fetchTasks(); // ✅ Fetch tasks only if `projectId` is available
+            fetchTasks(); //  Fetch tasks only if `projectId` is available
         }
     }, [pid]);
 
@@ -78,7 +78,7 @@ const Tasks = () => {
 
             ("Tasks deleted successfully:", response.data);
 
-            // ✅ Only update Redux state if API call is successful
+            //  Only update Redux state if API call is successful
             dispatch(deleteTasks(taskId));
             toast.success("Task Deleted Successfully")
         } catch (error) {

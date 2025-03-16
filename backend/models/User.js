@@ -5,18 +5,18 @@ const taskSchema = new mongoose.Schema({
     dueDate: { type: Date, required: true },
     priority: { type: String, required: true },
     reminder: { type: String, required: true },
-    taskCompleted: { type: Boolean, default: false }, // ✅ Tracks task status
+    taskCompleted: { type: Boolean, default: false }, 
 });
 
 const projectSchema = new mongoose.Schema({
-    projectId: { type: String, required: true }, // ✅ Unique identifier for each project
-    projectName: { type: String, required: true }, // ✅ Project name is stored
-    tasks: [taskSchema], // ✅ Each project contains multiple tasks
+    projectId: { type: String, required: true }, 
+    projectName: { type: String, required: true }, 
+    tasks: [taskSchema], 
 });
 
 const userSchema = new mongoose.Schema({
-    userId: { type: String, required: true, unique: true }, // ✅ Unique user identifier
-    projects: [projectSchema], // ✅ Each user has multiple projects
+    userId: { type: String, required: true, unique: true }, 
+    projects: [projectSchema], 
 });
 
 const User = mongoose.model("User", userSchema);

@@ -26,7 +26,7 @@ function ThemeProvider({ children, defaultTheme = "system", storageKey = "vite-u
     }, [theme]);
 
     const setTheme = (newTheme) => {
-        setThemeState(newTheme);  // ✅ Use the correct state setter function
+        setThemeState(newTheme);  //  Use the correct state setter function
     };
 
     return (
