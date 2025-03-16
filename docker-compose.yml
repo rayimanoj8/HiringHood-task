@@ -1,0 +1,15 @@
+version: '3'
+services:
+  backend:
+    build: ./backend
+    ports:
+      - "5001:5000"  # Change external port to 5001
+    environment:
+      - NODE_ENV=production
+
+  frontend:
+    build: ./task-manager
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend

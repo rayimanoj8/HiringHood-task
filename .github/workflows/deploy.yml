@@ -1,0 +1,36 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+
+      - name: Log in to Docker Hub
+        run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
+
+      - name: Build and Push Backend Image
+        run: |
+          docker build -t rayimanoj8/hiringhood-backend:latest ./backend
+          docker push rayimanoj8/hiringhood-backend:latest
+
+      - name: Build and Push Frontend Image
+        run: |
+          docker build -t rayimanoj8/hiringhood-frontend:latest ./task-manager
+          docker push rayimanoj8/hiringhood-frontend:latest
+
+      - name: Deploy Application
+        run: |
+          docker-compose up -d
+        env:
+          MONGO_URI: ${{ secrets.MONGO_URI }}
