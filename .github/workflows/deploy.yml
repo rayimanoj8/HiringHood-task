@@ -29,8 +29,10 @@ jobs:
           docker build -t rayimanoj8/hiringhood-frontend:latest ./task-manager
           docker push rayimanoj8/hiringhood-frontend:latest
 
-      - name: Deploy Application
+      - name: Install Docker Compose
         run: |
-          docker-compose up -d
-        env:
-          MONGO_URI: ${{ secrets.MONGO_URI }}
+          sudo apt-get update
+          sudo apt-get install -y docker-compose
+
+      - name: Deploy Application
+        run: docker-compose up -d
